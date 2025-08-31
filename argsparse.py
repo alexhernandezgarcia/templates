@@ -8,6 +8,7 @@ Example:
             --arg2 int
             --arg3 float
             --argflag
+            --arglist one two three
 """
 
 import sys
@@ -32,6 +33,7 @@ def add_args(parser):
         default=None,
         type=int,
         help="An integer argument.",
+        required=True,
     )
     parser.add_argument(
         "--arg3",
@@ -44,6 +46,11 @@ def add_args(parser):
         default=False,
         action="store_true",
         help="A flag argument. False by default. True if passed.",
+    )
+    parser.add_argument(
+        "--arglist",
+        nargs="*",
+        help="A list argument: Elements are passed as space-seprated values",
     )
     return parser
 
